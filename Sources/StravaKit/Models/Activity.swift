@@ -76,18 +76,6 @@ public struct Activity: Codable, Identifiable, Hashable {
     }
 }
 
-extension Activity {
-    public var formattedDistance: String {
-        let distanceInKm = (distance ?? 0) / 1000
-        return String(format: "%.0f km", distanceInKm)
-    }
-
-    public var formattedElevation: String {
-        let elevation = totalElevationGain ?? 0
-        return String(format: "%.0f m", elevation)
-    }
-}
-
 /**
  Represents a meta activity with only the unique activity ID.
  */
@@ -95,7 +83,8 @@ public final class MetaActivity: Codable {
     public let id: Int?
 }
 
-extension Activity: StravaItem {
+extension Activity {
+    
     public var stravaId: String {
         return id.description
     }

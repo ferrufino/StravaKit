@@ -31,17 +31,6 @@ public struct Route: Codable, Identifiable, Hashable {
 }
 
 extension Route {
-    public var formattedDistance: String {
-        let distanceInKm = distance / 1000
-        return String(format: "%.0f km", distanceInKm)
-    }
-
-    public var formattedElevation: String {
-        String(format: "%.0f m", elevationGain)
-    }
-}
-
-extension Route: StravaItem {
     
     public var stravaId: String {
         return id.description

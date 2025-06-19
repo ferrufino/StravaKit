@@ -18,6 +18,12 @@ public final class StravaService {
         self.repository = repository
         self.authManager = authManager
     }
+    
+    /// Fetch user's info
+    public func fetchAthlete() async throws -> Athlete {
+        let token = try await authManager.getValidToken()
+        return try await repository.fetchAthlete(token: token)
+    }
 
     /// Fetch all activities
     public func fetchActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {

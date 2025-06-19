@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'StravaKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A modern Swift library for the Strava API v3'
   s.description      = <<-DESC
 A Swift library for the Strava API v3, built with modern Swift practices such as async/await and Codable. Fully native with no external dependencies.

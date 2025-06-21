@@ -34,6 +34,15 @@ public final class StravaRepository {
             responseType: Athlete.self
         )
     }
+    
+    public func fetchAthleteZones(token: OAuthToken) async throws -> AthleteZone {
+        return try await webClient.performRequest(
+            with: StravaRouter.getAthleteZones.asURLRequest(),
+            token: token,
+            responseType: AthleteZone.self
+        )
+    }
+    
     public func fetchAllActivities(token: OAuthToken, page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
         return try await webClient.performRequest(
             with: StravaRouter.getActivities(page: page, perPage: perPage).asURLRequest(),

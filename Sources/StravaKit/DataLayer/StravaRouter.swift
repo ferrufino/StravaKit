@@ -19,13 +19,14 @@ public enum StravaRouter {
     case getRouteStreams(routeId: String)
     case getRoute(routeId: String)
     case getAthlete
+    case getAthleteZones
 
     /// Base URL for Strava API
     private var baseURL: URL {
         switch self {
         case .authorizeApp:
             return URL(string: "strava://oauth/mobile/authorize")!
-        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute, .getAthlete:
+        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute, .getAthlete, .getAthleteZones:
             return URL(string: "https://www.strava.com/api/v3")!
         }
     }
@@ -51,6 +52,8 @@ public enum StravaRouter {
             return "/routes/\(routeId)"
         case .getAthlete:
             return "/athlete"
+        case .getAthleteZones:
+            return "/athlete/zones"
         }
     }
 
@@ -61,7 +64,7 @@ public enum StravaRouter {
             return "GET"
         case .exchangeToken, .refreshToken, .deauthorize:
             return "POST"
-        case .getActivities, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute, .getAthlete:
+        case .getActivities, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute, .getAthlete, .getAthleteZones:
             return "GET"
         }
     }
@@ -106,7 +109,7 @@ public enum StravaRouter {
                 URLQueryItem(name: "keys", value: types.joined(separator: ",")),
                 URLQueryItem(name: "key_by_type", value: "true")
             ]
-        case .deauthorize, .getRouteStreams, .getRoute, .getAthlete:
+        case .deauthorize, .getRouteStreams, .getRoute, .getAthlete, .getAthleteZones:
             return nil
         }
     }
